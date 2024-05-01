@@ -1,0 +1,22 @@
+import string
+import random
+
+kh=string.ascii_lowercase
+bh=string.ascii_uppercase
+dg=string.digits
+sy=string.punctuation
+
+khsec=random.choices(kh,k=2)
+bhsec=random.choices(bh,k=2)
+dgsec=random.choices(dg,k=2)
+sysec=random.choices(sy,k=2)
+
+sifrelist=khsec+bhsec+dgsec+sysec
+
+random.shuffle(sifrelist)
+
+sifre="" 
+
+sifre=sifre.join(sifrelist) 
+
+sifre
