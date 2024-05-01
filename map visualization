@@ -1,0 +1,6 @@
+import folium
+m=folium.Map(location=[41.0768187,28.7301397],zoom_start=10)
+folium.Marker(location=[40.9688731,29.1154982]).add_to(m)
+folium.Circle(location=[40.9688731,29.1154982],radius=5000,
+              color="deeppink",fill=True).add_to(m)
+m
