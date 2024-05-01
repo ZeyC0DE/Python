@@ -1,0 +1,16 @@
+import requests
+response=requests.get("https://api.coincap.io/v2/assets") #veriyi getirir
+veri=response.json()                                      #json--> python çevirisi
+veri=veri.get("data")                                     #veri içindeki data keyine giriyor, sonuc bir liste
+coins={}                                                  #boş bi sözlük olusturduk
+for coin in veri:                                         #veri içerisindeki her bir coine ulastık
+    coins[coin['id']]=float(coin['priceUsd'])             #her bir coini kendi sözlügüme ekliyorum
+
+coin1="bitcoin"
+miktar=10
+coin2="ethereum"
+fiyat1=coins.get(coin1)
+fiyat2=coins.get(coin2)
+sonuc=fiyat1/fiyat2*miktar
+
+print(sonuc)
