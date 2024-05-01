@@ -1,0 +1,32 @@
+!pip install wikipedia
+import wikipedia
+
+wikipedia.set_lang("tr")
+sayfa=wikipedia.page("kedi")
+metin=sayfa.content
+metin=metin.lower()
+
+birimler=["m","metre","cm","santimetre","metrekare","km",
+          "kilometrekare","saat","joule","ohm","oktav",
+          "watt","W","m3","amper","yıl","hektar","ton","oktav"]
+
+metin=metin.replace("\n"," ")
+metin=metin.replace(".","")
+metin=metin.replace(",","")
+
+kelimeler=metin.split(" ")
+
+konum={}
+sayac=0
+for kelime in kelimeler:
+    if kelime in birimler:
+        k=kelimeler[sayac-1]
+        if k.isnumeric():
+            sonuc=k+" "+kelime
+            if kelime in konum.keys():
+                yeni=konum[kelime]
+                yeni.append(sonuc)
+                konum[kelime]=yeni
+            else:
+                konum[kelime]=[sonuc]
+    sayac=sayac+1
